@@ -15,16 +15,26 @@ class ContactCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+
+    var fullName: String? {
+        didSet {
+            fullnameLabel.text = fullName
+        }
+    }
+
+    var imageUrl: String? {
+        didSet {
+            imageUrlDidChange(with: imageUrl)
+        }
+    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         configureViews()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        
         configureViews()
     }
     
@@ -41,5 +51,16 @@ class ContactCell: UITableViewCell {
         fullnameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15).isActive = true
         fullnameLabel.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         fullnameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+    }
+
+    private func imageUrlDidChange(with imageUrl: String?) {
+        guard let imageUrl = imageUrl,
+              let urlPhoto = URL(string: imageUrl) else { return }
+
+        do {
+            let data = try Data(contentsOf: urlPhoto)
+            let image = UIImage(data: data)
+            contactImage.image = image
+        } catch _ {}
     }
 }

@@ -1,13 +1,5 @@
 import UIKit
 
-class UserIdsLegacy {
-    static let legacyIds = [10, 11, 12, 13]
-    
-    static func isLegacy(id: Int) -> Bool {
-        return legacyIds.contains(id)
-    }
-}
-
 final class ListContactsViewController: UIViewController{
 
     // MARK: - Views
@@ -35,6 +27,9 @@ final class ListContactsViewController: UIViewController{
 
     private var viewModel = ListContactsViewModel()
 
+    private var okDialog = "OK"
+    private var contactsListScreenTitle = "Lista de contatos"
+
     // MARK: - Lifecycle methods
 
     override func viewDidLoad() {
@@ -46,7 +41,7 @@ final class ListContactsViewController: UIViewController{
     // MARK: - Set Up methods
     
     private func setUp() {
-        title = "Lista de contatos"
+        title = contactsListScreenTitle
         setUpSubView()
         setUpConstraints()
         setUpDelegates()
@@ -71,13 +66,9 @@ final class ListContactsViewController: UIViewController{
 
     // MARK: - Contents
     
-    func isLegacy(contact: Contact) -> Bool {
-        return UserIdsLegacy.isLegacy(id: contact.id)
-    }
-
     private func showAlert(withTitle title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: okDialog, style: .default, handler: nil))
         self.present(alert, animated: true)
     }
 }
@@ -92,9 +83,9 @@ extension ListContactsViewController: ListContactsViewModelDelegate {
         }
     }
 
-    func contactsLoadFailed(withError error: NetworkErrors) {
+    func contactsLoadFailed(withErrorInfo errorInfo: (title: String, message: String)) {
         DispatchQueue.main.async {
-            self.showAlert(withTitle: "Ops, ocorreu um erro", message: error.localizedDescription)
+            self.showAlert(withTitle: errorInfo.title, message: errorInfo.message)
         }
     }
 }
@@ -107,31 +98,20 @@ extension ListContactsViewController: UITableViewDataSource, UITableViewDelegate
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ContactCell.self), for: indexPath) as? ContactCell else {
+        guard let cell = tableView
+                .dequeueReusableCell(withIdentifier: String(describing: ContactCell.self),
+                                     for: indexPath) as? ContactCell else {
             return UITableViewCell()
         }
 
-        let contact = viewModel.contacts[indexPath.row]
-        cell.fullnameLabel.text = contact.name
-
-        if let urlPhoto = URL(string: contact.photoURL) {
-            do {
-                let data = try Data(contentsOf: urlPhoto)
-                let image = UIImage(data: data)
-                cell.contactImage.image = image
-            } catch _ {}
-        }
+        cell.fullName = viewModel.contacts[indexPath.row].name
+        cell.imageUrl = viewModel.contacts[indexPath.row].photoURL
 
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let contato = viewModel.contacts[indexPath.row]
-
-        guard isLegacy(contact: contato) else {
-            showAlert(withTitle: "Você tocou em", message: contato.name)
-            return
-        }
-        showAlert(withTitle: "Atenção", message: "Você tocou no contato sorteado")
+        let alertInfo = viewModel.selectContactFromList(at: indexPath)
+        showAlert(withTitle: alertInfo.title, message: alertInfo.message)
     }
 }
