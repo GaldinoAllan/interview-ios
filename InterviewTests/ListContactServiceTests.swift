@@ -3,22 +3,45 @@ import XCTest
 
 class ListContactServiceTests: XCTestCase {
 
+    private var subjectUnderTest: ListContactService!
+    private var session: NetworkSessionMock!
+
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        session = NetworkSessionMock()
+        subjectUnderTest = ListContactService(urlSession: session)
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        session = nil
+        subjectUnderTest = nil
     }
-}
 
+    func testFetchContactsWithoutDataShouldFailWithEmptyList() {
+        subjectUnderTest.fetchContacts { result in
+            switch result {
+            case .success(_):
+                XCTFail("There should not be any contacts here")
+            case .failure(let error):
+                XCTAssertEqual(error.localizedDescription, "Empty response")
+            }
+        }
+    }
 
-var mockData: Data? {
-    """
-    [{
-      "id": 2,
-      "name": "Beyonce",
-      "photoURL": "https://api.adorable.io/avatars/285/a2.png"
-    }]
-    """.data(using: .utf8)
+    func testFetchContactsWithMockedDataShouldHaveBeyonceContact() {
+        session = NetworkSessionMock(data: ContactsFactory.crateBeyonceContact())
+        subjectUnderTest = ListContactService(urlSession: session)
+
+        let expectedContact = Contact(id: 2,
+                                      name: "Beyonce",
+                                      photoURL: "https://api.adorable.io/avatars/285/a2.png")
+
+        subjectUnderTest.fetchContacts { result in
+            switch result {
+            case .success(let contacts):
+                XCTAssertEqual(contacts, [expectedContact])
+            case .failure(let error):
+                XCTFail("Load contacts list failed with error: \(error.localizedDescription)")
+            }
+        }
+    }
 }
