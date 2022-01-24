@@ -37,6 +37,12 @@ class ContactCell: UITableViewCell {
         super.init(coder: coder)
         configureViews()
     }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        fullName = nil
+        imageUrl = nil
+    }
     
     func configureViews() {
         contentView.addSubview(contactImage)
