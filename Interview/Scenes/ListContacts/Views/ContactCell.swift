@@ -90,6 +90,8 @@ class ContactCell: UITableViewCell {
         ])
     }
 
+    // MARK: - Contents
+
     private func imageUrlDidChange(with imageUrl: String?) {
         guard let imageUrl = imageUrl,
               let urlPhoto = URL(string: imageUrl) else { return }
