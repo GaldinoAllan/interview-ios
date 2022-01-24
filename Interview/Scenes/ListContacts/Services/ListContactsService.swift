@@ -4,17 +4,6 @@ protocol ListContactServiceProtocol {
     func fetchContacts(completionHandler: @escaping (Result<[Contact], NetworkErrors>) -> Void)
 }
 
-/*
- Json Contract
-[
-  {
-    "id": 1,
-    "name": "Shakira",
-    "photoURL": "https://api.adorable.io/avatars/285/a1.png"
-  }
-]
-*/
-
 class ListContactService: ListContactServiceProtocol {
     private let apiURL = "https://run.mocky.io/v3/1d9c3bbe-eb63-4d09-980a-989ad740a9ac"
     private var session: NetworkSession

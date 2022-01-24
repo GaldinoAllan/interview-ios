@@ -107,6 +107,30 @@
 			path = Factory;
 			sourceTree = "<group>";
 		};
+		0F0D54FA279E2A0C0008E518 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				0F0D54FB279E2A130008E518 /* ListContacts */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		0F0D54FB279E2A130008E518 /* ListContacts */ = {
+			isa = PBXGroup;
+			children = (
+				0F0D54FC279E2A1C0008E518 /* Services */,
+			);
+			path = ListContacts;
+			sourceTree = "<group>";
+		};
+		0F0D54FC279E2A1C0008E518 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				6ABE2F8F24CEF691009D7593 /* ListContactServiceTests.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		6AB24DB323EB546D00530BA5 = {
 			isa = PBXGroup;
 			children = (
@@ -142,9 +166,9 @@
 		6AB24DD523EB546F00530BA5 /* InterviewTests */ = {
 			isa = PBXGroup;
 			children = (
+				0F0D54FA279E2A0C0008E518 /* Scenes */,
 				0F0D54F7279E10180008E518 /* Factory */,
 				0F0D54F4279E0F090008E518 /* Mocks */,
-				6ABE2F8F24CEF691009D7593 /* ListContactServiceTests.swift */,
 				6AB24DD823EB546F00530BA5 /* Info.plist */,
 			);
 			path = InterviewTests;

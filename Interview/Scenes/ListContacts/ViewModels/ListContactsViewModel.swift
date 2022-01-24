@@ -12,12 +12,12 @@ class ListContactsViewModel {
     private let service: ListContactServiceProtocol
     private(set) var contacts = [Contact]()
 
-    weak var delegate: ListContactsViewModelDelegate?
-
     private let contactsListLoadFailedTitle = "Ops, ocorreu um erro"
     private let notLegacyContactTitle = "Você tocou em"
     private let atentionTitle = "Atenção"
     private let legacyContactMessage = "Você tocou no contato sorteado"
+
+    weak var delegate: ListContactsViewModelDelegate?
 
     // MARK: - Initializer
     

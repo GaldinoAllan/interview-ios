@@ -103,10 +103,8 @@ extension ListContactsViewController: UITableViewDataSource, UITableViewDelegate
                                      for: indexPath) as? ContactCell else {
             return UITableViewCell()
         }
-
         cell.fullName = viewModel.contacts[indexPath.row].name
         cell.imageUrl = viewModel.contacts[indexPath.row].photoURL
-
         return cell
     }
 

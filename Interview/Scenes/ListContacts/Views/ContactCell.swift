@@ -1,7 +1,10 @@
 import UIKit
 
 class ContactCell: UITableViewCell {
-    lazy var contactImage: UIImageView = {
+
+    // MARK: - Views
+
+    private lazy var contactImage: UIImageView = {
         let imgView = UIImageView()
         imgView.translatesAutoresizingMaskIntoConstraints = false
         imgView.contentMode = .scaleAspectFit
@@ -9,16 +12,18 @@ class ContactCell: UITableViewCell {
         return imgView
     }()
     
-    lazy var fullnameLabel: UILabel = {
+    private lazy var fullNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
+    // MARK: - Properties
+
     var fullName: String? {
         didSet {
-            fullnameLabel.text = fullName
+            fullNameLabel.text = fullName
         }
     }
 
@@ -27,36 +32,62 @@ class ContactCell: UITableViewCell {
             imageUrlDidChange(with: imageUrl)
         }
     }
+
+    // MARK: - Initializers
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configureViews()
+        setUp()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        configureViews()
+        setUp()
     }
+
+    // MARK: - Lifecycle methods
 
     override func prepareForReuse() {
         super.prepareForReuse()
         fullName = nil
         imageUrl = nil
     }
+
+    // MARK: - Set Up methods
     
-    func configureViews() {
+    private func setUp() {
+        setUpSubViews()
+        setUpConstraints()
+    }
+
+    private func setUpSubViews() {
         contentView.addSubview(contactImage)
-        contentView.addSubview(fullnameLabel)
-        
-        contactImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15).isActive = true
-        contactImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        contactImage.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        contactImage.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        
-        fullnameLabel.leadingAnchor.constraint(equalTo: contactImage.trailingAnchor, constant: 16).isActive = true
-        fullnameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15).isActive = true
-        fullnameLabel.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        fullnameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        contentView.addSubview(fullNameLabel)
+    }
+
+    private func setUpConstraints() {
+        setUpContactImageConstraints()
+        setUpFullNameLabelConstraints()
+    }
+
+    private func setUpContactImageConstraints() {
+        NSLayoutConstraint.activate([
+            contactImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
+            contactImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            contactImage.heightAnchor.constraint(equalToConstant: 100),
+            contactImage.widthAnchor.constraint(equalToConstant: 100)
+        ])
+    }
+
+    private func setUpFullNameLabelConstraints() {
+        NSLayoutConstraint.activate([
+            fullNameLabel.leadingAnchor.constraint(equalTo: contactImage.trailingAnchor,
+                                                   constant: 16),
+            fullNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,
+                                                    constant: -15),
+            fullNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+            fullNameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ])
     }
 
     private func imageUrlDidChange(with imageUrl: String?) {
