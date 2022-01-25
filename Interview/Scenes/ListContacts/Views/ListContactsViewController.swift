@@ -25,10 +25,22 @@ final class ListContactsViewController: UIViewController{
 
     // MARK: - Properties
 
-    private var viewModel = ListContactsViewModel()
-
     private var okDialog = "OK"
     private var contactsListScreenTitle = "Lista de contatos"
+    
+    private let viewModel: ListContactsViewModel
+
+    // MARK: - Initializers
+
+    init(viewModel: ListContactsViewModel = ListContactsViewModel()) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     // MARK: - Lifecycle methods
 
@@ -66,8 +78,10 @@ final class ListContactsViewController: UIViewController{
 
     // MARK: - Contents
     
-    private func showAlert(withTitle title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    private func showAlert(with alertInfo: (title: String, message: String)) {
+        let alert = UIAlertController(title: alertInfo.title,
+                                      message: alertInfo.message,
+                                      preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: okDialog, style: .default, handler: nil))
         self.present(alert, animated: true)
     }
@@ -77,15 +91,17 @@ final class ListContactsViewController: UIViewController{
 
 extension ListContactsViewController: ListContactsViewModelDelegate {
     func contactsDidLoad() {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
             self.tableView.reloadData()
             self.activity.stopAnimating()
         }
     }
 
     func contactsLoadFailed(withErrorInfo errorInfo: (title: String, message: String)) {
-        DispatchQueue.main.async {
-            self.showAlert(withTitle: errorInfo.title, message: errorInfo.message)
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.showAlert(with: errorInfo)
         }
     }
 }
@@ -110,6 +126,6 @@ extension ListContactsViewController: UITableViewDataSource, UITableViewDelegate
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let alertInfo = viewModel.selectContactFromList(at: indexPath)
-        showAlert(withTitle: alertInfo.title, message: alertInfo.message)
+        showAlert(with: alertInfo)
     }
 }

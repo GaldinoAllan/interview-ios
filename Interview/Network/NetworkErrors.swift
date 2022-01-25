@@ -11,6 +11,7 @@ import Foundation
 enum NetworkErrors: Error {
     case invalidUrl
     case emptyResponse
+    case serverError(message: String)
     case jsonDecoding(message: String)
 
     var localizedDescription: String {
@@ -19,6 +20,8 @@ enum NetworkErrors: Error {
             return "Invalid URL"
         case .emptyResponse:
             return "Empty response"
+        case .serverError(_):
+            return "Error returning data from the server"
         case .jsonDecoding(_):
             return "Could not decode JSON"
         }

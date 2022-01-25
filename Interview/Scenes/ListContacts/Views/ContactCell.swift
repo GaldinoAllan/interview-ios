@@ -96,10 +96,21 @@ class ContactCell: UITableViewCell {
         guard let imageUrl = imageUrl,
               let urlPhoto = URL(string: imageUrl) else { return }
 
-        do {
-            let data = try Data(contentsOf: urlPhoto)
-            let image = UIImage(data: data)
-            contactImage.image = image
-        } catch _ {}
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            guard let self = self else { return }
+
+            do {
+                let data = try Data(contentsOf: urlPhoto)
+                let image = UIImage(data: data)
+                self.setContactImage(with: image)
+            } catch _ {}
+        }
+    }
+
+    private func setContactImage(with image: UIImage?) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.contactImage.image = image
+        }
     }
 }

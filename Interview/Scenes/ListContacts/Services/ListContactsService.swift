@@ -24,6 +24,12 @@ class ListContactService: ListContactServiceProtocol {
         session.loadContacts(with: api) { [weak self] (data, response, error) in
             guard let self = self else { return }
 
+            guard error == nil else {
+                completionHandler(.failure(
+                    .serverError(message: error?.localizedDescription ?? "")))
+                return
+            }
+
             guard let jsonData = data else {
                 completionHandler(.failure(.emptyResponse))
                 return
