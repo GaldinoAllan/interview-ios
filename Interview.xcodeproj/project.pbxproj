@@ -7,16 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F0D54EE279E0B3C0008E518 /* NetworkErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0D54ED279E0B3C0008E518 /* NetworkErrors.swift */; };
+		0F0D54F0279E0CF60008E518 /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0D54EF279E0CF60008E518 /* NetworkSession.swift */; };
+		0F0D54F3279E0DAC0008E518 /* URLSession+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0D54F2279E0DAC0008E518 /* URLSession+extension.swift */; };
+		0F0D54F6279E0F1C0008E518 /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0D54F5279E0F1C0008E518 /* NetworkSession.swift */; };
+		0F0D54F9279E10260008E518 /* ContactsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0D54F8279E10260008E518 /* ContactsFactory.swift */; };
+		0FBDCBED27A030C100C2B782 /* ListContactsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBDCBEC27A030C100C2B782 /* ListContactsViewModelTests.swift */; };
+		0FBDCBEF27A035E500C2B782 /* ListContactServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBDCBEE27A035E500C2B782 /* ListContactServiceMock.swift */; };
+		0FBDCBF227A0392300C2B782 /* ListContactsViewModelDelegateSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBDCBF127A0392300C2B782 /* ListContactsViewModelDelegateSpy.swift */; };
 		6AB24DC023EB546D00530BA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB24DBF23EB546D00530BA5 /* AppDelegate.swift */; };
 		6AB24DC223EB546D00530BA5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB24DC123EB546D00530BA5 /* SceneDelegate.swift */; };
 		6AB24DC923EB546F00530BA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AB24DC823EB546F00530BA5 /* Assets.xcassets */; };
 		6AB24DCC23EB546F00530BA5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AB24DCA23EB546F00530BA5 /* LaunchScreen.storyboard */; };
-		6AB24DD723EB546F00530BA5 /* InterviewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB24DD623EB546F00530BA5 /* InterviewTests.swift */; };
 		6AB24DEA23EB54E800530BA5 /* ListContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB24DE923EB54E800530BA5 /* ListContactsViewController.swift */; };
 		6AB24DEF23EB552100530BA5 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB24DEE23EB552100530BA5 /* Contact.swift */; };
 		6AB24DF223EB554300530BA5 /* ListContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB24DF123EB554300530BA5 /* ListContactsViewModel.swift */; };
 		6AB24DF523EB556700530BA5 /* ListContactsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB24DF423EB556700530BA5 /* ListContactsService.swift */; };
 		6AB24DF823EB558D00530BA5 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB24DF723EB558D00530BA5 /* ContactCell.swift */; };
+		6ABE2F9024CEF691009D7593 /* ListContactServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ABE2F8F24CEF691009D7593 /* ListContactServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +38,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F0D54ED279E0B3C0008E518 /* NetworkErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrors.swift; sourceTree = "<group>"; };
+		0F0D54EF279E0CF60008E518 /* NetworkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSession.swift; sourceTree = "<group>"; };
+		0F0D54F2279E0DAC0008E518 /* URLSession+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+extension.swift"; sourceTree = "<group>"; };
+		0F0D54F5279E0F1C0008E518 /* NetworkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSession.swift; sourceTree = "<group>"; };
+		0F0D54F8279E10260008E518 /* ContactsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsFactory.swift; sourceTree = "<group>"; };
+		0FBDCBEC27A030C100C2B782 /* ListContactsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListContactsViewModelTests.swift; sourceTree = "<group>"; };
+		0FBDCBEE27A035E500C2B782 /* ListContactServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListContactServiceMock.swift; sourceTree = "<group>"; };
+		0FBDCBF127A0392300C2B782 /* ListContactsViewModelDelegateSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListContactsViewModelDelegateSpy.swift; sourceTree = "<group>"; };
 		6AB24DBC23EB546D00530BA5 /* Interview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Interview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AB24DBF23EB546D00530BA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6AB24DC123EB546D00530BA5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,13 +53,13 @@
 		6AB24DCB23EB546F00530BA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6AB24DCD23EB546F00530BA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6AB24DD223EB546F00530BA5 /* InterviewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InterviewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6AB24DD623EB546F00530BA5 /* InterviewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewTests.swift; sourceTree = "<group>"; };
 		6AB24DD823EB546F00530BA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6AB24DE923EB54E800530BA5 /* ListContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListContactsViewController.swift; sourceTree = "<group>"; };
 		6AB24DEE23EB552100530BA5 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		6AB24DF123EB554300530BA5 /* ListContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListContactsViewModel.swift; sourceTree = "<group>"; };
 		6AB24DF423EB556700530BA5 /* ListContactsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListContactsService.swift; sourceTree = "<group>"; };
 		6AB24DF723EB558D00530BA5 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
+		6ABE2F8F24CEF691009D7593 /* ListContactServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListContactServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +80,81 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F0D54EC279E0B2B0008E518 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				0F0D54ED279E0B3C0008E518 /* NetworkErrors.swift */,
+				0F0D54EF279E0CF60008E518 /* NetworkSession.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		0F0D54F1279E0D950008E518 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0F0D54F2279E0DAC0008E518 /* URLSession+extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0F0D54F4279E0F090008E518 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				0F0D54F5279E0F1C0008E518 /* NetworkSession.swift */,
+				0FBDCBEE27A035E500C2B782 /* ListContactServiceMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		0F0D54F7279E10180008E518 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				0F0D54F8279E10260008E518 /* ContactsFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		0F0D54FA279E2A0C0008E518 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				0F0D54FB279E2A130008E518 /* ListContacts */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		0F0D54FB279E2A130008E518 /* ListContacts */ = {
+			isa = PBXGroup;
+			children = (
+				0FBDCBE927A0308E00C2B782 /* ViewModels */,
+				0F0D54FC279E2A1C0008E518 /* Services */,
+			);
+			path = ListContacts;
+			sourceTree = "<group>";
+		};
+		0F0D54FC279E2A1C0008E518 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				6ABE2F8F24CEF691009D7593 /* ListContactServiceTests.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		0FBDCBE927A0308E00C2B782 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				0FBDCBEC27A030C100C2B782 /* ListContactsViewModelTests.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		0FBDCBF027A0391500C2B782 /* Spies */ = {
+			isa = PBXGroup;
+			children = (
+				0FBDCBF127A0392300C2B782 /* ListContactsViewModelDelegateSpy.swift */,
+			);
+			path = Spies;
+			sourceTree = "<group>";
+		};
 		6AB24DB323EB546D00530BA5 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +176,8 @@
 		6AB24DBE23EB546D00530BA5 /* Interview */ = {
 			isa = PBXGroup;
 			children = (
+				0F0D54F1279E0D950008E518 /* Extensions */,
+				0F0D54EC279E0B2B0008E518 /* Network */,
 				6AB24DF923EB55D400530BA5 /* Resources */,
 				6AB24DEB23EB54F500530BA5 /* Scenes */,
 				6AB24DBF23EB546D00530BA5 /* AppDelegate.swift */,
@@ -97,7 +190,10 @@
 		6AB24DD523EB546F00530BA5 /* InterviewTests */ = {
 			isa = PBXGroup;
 			children = (
-				6AB24DD623EB546F00530BA5 /* InterviewTests.swift */,
+				0FBDCBF027A0391500C2B782 /* Spies */,
+				0F0D54FA279E2A0C0008E518 /* Scenes */,
+				0F0D54F7279E10180008E518 /* Factory */,
+				0F0D54F4279E0F090008E518 /* Mocks */,
 				6AB24DD823EB546F00530BA5 /* Info.plist */,
 			);
 			path = InterviewTests;
@@ -264,11 +360,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F0D54F3279E0DAC0008E518 /* URLSession+extension.swift in Sources */,
 				6AB24DEF23EB552100530BA5 /* Contact.swift in Sources */,
 				6AB24DEA23EB54E800530BA5 /* ListContactsViewController.swift in Sources */,
 				6AB24DF523EB556700530BA5 /* ListContactsService.swift in Sources */,
+				0F0D54F0279E0CF60008E518 /* NetworkSession.swift in Sources */,
 				6AB24DC023EB546D00530BA5 /* AppDelegate.swift in Sources */,
 				6AB24DF223EB554300530BA5 /* ListContactsViewModel.swift in Sources */,
+				0F0D54EE279E0B3C0008E518 /* NetworkErrors.swift in Sources */,
 				6AB24DF823EB558D00530BA5 /* ContactCell.swift in Sources */,
 				6AB24DC223EB546D00530BA5 /* SceneDelegate.swift in Sources */,
 			);
@@ -278,7 +377,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6AB24DD723EB546F00530BA5 /* InterviewTests.swift in Sources */,
+				0F0D54F9279E10260008E518 /* ContactsFactory.swift in Sources */,
+				6ABE2F9024CEF691009D7593 /* ListContactServiceTests.swift in Sources */,
+				0FBDCBED27A030C100C2B782 /* ListContactsViewModelTests.swift in Sources */,
+				0FBDCBEF27A035E500C2B782 /* ListContactServiceMock.swift in Sources */,
+				0F0D54F6279E0F1C0008E518 /* NetworkSession.swift in Sources */,
+				0FBDCBF227A0392300C2B782 /* ListContactsViewModelDelegateSpy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

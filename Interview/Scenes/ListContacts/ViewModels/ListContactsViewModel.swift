@@ -1,27 +1,56 @@
 import Foundation
 
-/******************* VIEWMODEL ********************/
+protocol ListContactsViewModelDelegate: AnyObject {
+    func contactsDidLoad()
+    func contactsLoadFailed(withErrorInfo errorInfo: (title: String, message: String))
+}
+
 class ListContactsViewModel {
-    private let service = ListContactService()
+
+    // MARK: - Properties
+
+    private let service: ListContactServiceProtocol
+    private(set) var contacts = [Contact]()
+
+    private let contactsListLoadFailedTitle = "Ops, ocorreu um erro"
+    private let notLegacyContactTitle = "Você tocou em"
+    private let atentionTitle = "Atenção"
+    private let legacyContactMessage = "Você tocou no contato sorteado"
+
+    weak var delegate: ListContactsViewModelDelegate?
+
+    // MARK: - Initializer
     
-    private var completion: (([Contact]?, Error?) -> Void)?
+    init(service: ListContactServiceProtocol = ListContactService()) {
+        self.service = service
+    }
+
+    // MARK: - Contents
     
-    init() { }
-    
-    func loadContacts(_ completion: @escaping ([Contact]?, Error?) -> Void) {
-        self.completion = completion
-        service.fetchContacts { contacts, err in
-            self.handle(contacts, err)
+    func loadContacts() {
+        service.fetchContacts { [weak self] (result) in
+            guard let self = self else { return }
+
+            switch result {
+            case .success(let contacts):
+                self.contacts = contacts
+                self.delegate?.contactsDidLoad()
+            case .failure(let error):
+                self.delegate?
+                    .contactsLoadFailed(withErrorInfo: (title: self.contactsListLoadFailedTitle,
+                                                        message: error.localizedDescription))
+            }
         }
     }
-    
-    private func handle(_ contacts: [Contact]?, _ error: Error?) {
-        if let e = error {
-            completion?(nil, e)
+
+    func selectContactFromList(at indexPath: IndexPath) -> (title: String, message: String){
+        let contact = contacts[indexPath.row]
+        let isLegacy = [10, 11, 12, 13].contains(contact.id)
+
+        guard isLegacy else {
+            return (title: notLegacyContactTitle, message: contact.name)
         }
-        
-        if let contacts = contacts {
-            completion?(contacts, nil)
-        }
+
+        return (title: atentionTitle, message: legacyContactMessage)
     }
 }
